@@ -26,6 +26,7 @@ def main():
 
     logger = setup_logging()
     logger.info("Starting ai-system-diagnoser in %s mode", config.mode)
+    logger.info("Using AI model: %s", config.model_name)
 
     runner = ConversationRunner(config)
     runner.run_conversation()
