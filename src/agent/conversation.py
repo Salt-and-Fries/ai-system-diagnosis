@@ -24,11 +24,14 @@ class ConversationRunner:
             model=self.config.model_name, messages=history, tools=tool_schemas
         )
 
-    def _append_tool_message(self, history: List[dict], tool_name: str, tool_result):
+    def _append_tool_message(
+        self, history: List[dict], tool_name: str, tool_result, tool_call_id: str
+    ):
         history.append(
             {
                 "role": "tool",
                 "name": tool_name,
+                "tool_call_id": tool_call_id,
                 "content": json.dumps(tool_result.__dict__),
             }
         )
@@ -52,12 +55,13 @@ class ConversationRunner:
                         history,
                         tool_name,
                         type("Decline", (), {"__dict__": {"success": False, "data": {}, "error": "User declined"}})(),
+                        tool_call.id,
                     )
                     continue
 
             self.logger.info("Running tool %s with args %s", tool_name, tool_args)
             result = tool.run(**tool_args)
-            self._append_tool_message(history, tool_name, result)
+            self._append_tool_message(history, tool_name, result, tool_call.id)
 
     def run_conversation(self):
         if not self.config.openai_api_key:
