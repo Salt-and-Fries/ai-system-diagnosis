@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: ai-system-diagnoser
+Version: 0.1.0
+Summary: Local AI assistant for system diagnostics and optional fixes
+Author: AI
+Requires-Python: >=3.10
+Requires-Dist: openai>=1.51.0
+Requires-Dist: psutil>=5.9.0
+Requires-Dist: python-dotenv>=1.0.1
+Provides-Extra: development
+Requires-Dist: pytest>=7.4; extra == "development"
