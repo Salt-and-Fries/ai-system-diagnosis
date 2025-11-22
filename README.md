@@ -13,6 +13,13 @@ Local-first assistant that inspects your machine, summarizes likely issues, and 
    ```bash
    pip install .[development]
    ```
+
+   For the Tkinter UI (requires system Tk display support):
+   ```bash
+   pip install .[ui]
+   ```
+   If Tk or the HTML widget can't start (e.g., no display, missing `tkhtmlview`, or platform-specific Pillow wheels), the app will
+   automatically fall back to the CLI and print the reason.
 2. Copy `.env.example` to `.env` and fill in `OPENAI_API_KEY` and any overrides.
 3. Run in diagnostic-only mode (default):
    ```bash

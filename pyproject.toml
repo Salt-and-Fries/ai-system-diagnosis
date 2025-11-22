@@ -7,11 +7,13 @@ requires-python = ">=3.10"
 dependencies = [
   "openai>=1.51.0",
   "psutil>=5.9.0",
-  "python-dotenv>=1.0.1"
+  "python-dotenv>=1.0.1",
 ]
 
 [project.optional-dependencies]
 development = ["pytest>=7.4"]
+# UI extras require tkhtmlview
+ui = ["tkhtmlview>=0.3.1"]
 
 [build-system]
 requires = ["setuptools", "wheel"]

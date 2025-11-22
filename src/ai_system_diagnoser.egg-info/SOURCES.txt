@@ -22,6 +22,8 @@ src/tools/network.py
 src/tools/processes.py
 src/tools/system_overview.py
 src/tools/temperatures.py
+src/ui/__init__.py
+src/ui/chat_window.py
 src/utils/__init__.py
 src/utils/logging_utils.py
 src/utils/os_detect.py
