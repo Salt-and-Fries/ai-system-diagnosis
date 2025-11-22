@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
+import sys
 
 from .agent.conversation import ConversationRunner
 from .config import load_config
@@ -36,11 +38,27 @@ def main():
     runner = ConversationRunner(config)
     if args.cli:
         runner.run_conversation()
-    else:
-        from .ui import ChatWindow
+        return
 
-        app = ChatWindow(runner)
-        app.run()
+    if sys.version_info >= (3, 14):
+        print(
+            "UI dependencies are not available on Python 3.14 yet. "
+            "Run with --cli or install on Python 3.10-3.13 to use the UI."
+        )
+        runner.run_conversation()
+        return
+
+    if not importlib.util.find_spec("tkhtmlview"):
+        print(
+            "UI dependencies are missing. Install with 'pip install .[ui]' or rerun with --cli."
+        )
+        runner.run_conversation()
+        return
+
+    from .ui import ChatWindow
+
+    app = ChatWindow(runner)
+    app.run()
 
 
 if __name__ == "__main__":  # pragma: no cover

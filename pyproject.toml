@@ -3,19 +3,17 @@ name = "ai-system-diagnoser"
 version = "0.1.0"
 description = "Local AI assistant for system diagnostics and optional fixes"
 authors = [{name = "AI"}]
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10"
 dependencies = [
   "openai>=1.51.0",
   "psutil>=5.9.0",
   "python-dotenv>=1.0.1",
-  # tkhtmlview publishes up to 0.3.1 on PyPI; pin to the latest available release
-  "tkhtmlview>=0.3.1",
-  # Pillow does not ship prebuilt wheels for Python 3.14 yet; cap to supported versions
-  "pillow>=9.5.0,<10.4.0; python_version < '3.14'"
 ]
 
 [project.optional-dependencies]
 development = ["pytest>=7.4"]
+# UI extras require tkhtmlview (which currently publishes wheels for Python < 3.14)
+ui = ["tkhtmlview>=0.3.1; python_version < '3.14'"]
 
 [build-system]
 requires = ["setuptools", "wheel"]

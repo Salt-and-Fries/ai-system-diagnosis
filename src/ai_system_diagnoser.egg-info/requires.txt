@@ -4,3 +4,8 @@ python-dotenv>=1.0.1
 
 [development]
 pytest>=7.4
+
+[ui]
+
+[ui:python_version < "3.14"]
+tkhtmlview>=0.3.1
