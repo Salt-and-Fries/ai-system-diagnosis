@@ -9,7 +9,7 @@ Local-first assistant that inspects your machine, summarizes likely issues, and 
 - Logging to `ai-system-diagnoser.log` so tool executions are recorded.
 
 ## Getting started
-1. Install dependencies (Python 3.10+):
+1. Install dependencies (Python 3.10+ and <3.14—Pillow wheels are not yet published for 3.14):
    ```bash
    pip install .[development]
    ```
