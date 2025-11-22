@@ -12,8 +12,8 @@ dependencies = [
 
 [project.optional-dependencies]
 development = ["pytest>=7.4"]
-# UI extras require tkhtmlview (which currently publishes wheels for Python < 3.14)
-ui = ["tkhtmlview>=0.3.1; python_version < '3.14'"]
+# UI extras require tkhtmlview
+ui = ["tkhtmlview>=0.3.1"]
 
 [build-system]
 requires = ["setuptools", "wheel"]
